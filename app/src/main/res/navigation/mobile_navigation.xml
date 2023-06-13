@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_content">
+
+    <fragment
+        android:id="@+id/navigation_content"
+        android:name="com.example.ssutask.ui.fragments.BooksFragment"
+        android:label="@string/title_home"
+        app:route="home"
+        tools:layout="@layout/fragment_book_list">
+        <action
+            android:id="@+id/action_navigation_content_to_navigation_add_book"
+            app:destination="@id/navigation_add_book"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_content_to_navigation_book_content2"
+            app:destination="@id/navigation_book_content"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_book"
+        android:name="com.example.ssutask.ui.fragments.AddBookFragment"
+        android:label="Book editor"
+        app:route="addBook"
+
+        tools:layout="@layout/fragment_add_book">
+        <action
+            android:id="@+id/action_navigation_add_book_to_navigation_book_content2"
+            app:destination="@id/navigation_book_content" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_book_content"
+        android:name="com.example.ssutask.ui.fragments.BookContentFragment"
+        android:label="Book page"
+        app:route="bookContent"
+        tools:layout="@layout/fragment_book_content">
+        <argument
+            android:name="bookId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_navigation_book_content_to_navigation_add_book"
+            app:destination="@id/navigation_add_book" />
+    </fragment>
+</navigation>
